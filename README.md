@@ -14,7 +14,7 @@ Content lives in `src/data`. Images are in `public/img`.
     src/
       app/        entry, providers, router, layouts, global styles
       pages/      one slice per route (home, rfps, grants, grant-detail, grantee, expenses, blog, post, brand, apply, faq, not-found)
-      widgets/    header, footer, cta, project-card, not-found
+      widgets/    header, footer, cta, project-card
       features/   apply-form, grant-filters
       entities/   grant, person, post, rfp, expense, faq (model + ui)
       shared/     ui kit, config (routes, nav)

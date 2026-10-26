@@ -1,10 +1,9 @@
-import { Link, useParams } from 'react-router-dom'
+import { Link, Navigate, useParams } from 'react-router-dom'
 import { grantById } from '@/entities/grant'
 import { avatarSrc, personById } from '@/entities/person'
 import { routes } from '@/shared/config'
 import { BackButton, Badge, Button, ExtLink, External, SectionHeading, TextLink } from '@/shared/ui'
 import { Cta } from '@/widgets/cta'
-import { NotFound } from '@/widgets/not-found'
 import { ProjectCard } from '@/widgets/project-card'
 
 const fallback = {
@@ -27,7 +26,7 @@ function Block({ title, children }) {
 export function GrantDetailPage() {
   const { id } = useParams()
   const base = grantById(id)
-  if (!base) return <NotFound />
+  if (!base) return <Navigate to={routes.notFound} replace />
   const g = { ...fallback, link: 'www.granttitleproject.com', ...base }
   const more = ['trading-strategy-risk-tool', 'dydx-vote-subgraph', 'rust-sdk']
     .filter((x) => x !== g.id)

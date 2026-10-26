@@ -1,15 +1,15 @@
-import { useParams } from 'react-router-dom'
+import { Navigate, useParams } from 'react-router-dom'
 import { grantById } from '@/entities/grant'
 import { CoverArt, postById } from '@/entities/post'
+import { routes } from '@/shared/config'
 import { BackButton, SectionHeading } from '@/shared/ui'
 import { Cta } from '@/widgets/cta'
-import { NotFound } from '@/widgets/not-found'
 import { ProjectCard } from '@/widgets/project-card'
 
 export function PostPage() {
   const { id } = useParams()
   const post = postById(id)
-  if (!post) return <NotFound />
+  if (!post) return <Navigate to={routes.notFound} replace />
   const related = post.grants.map(grantById).filter(Boolean).slice(0, 4)
 
   return (

@@ -29,6 +29,7 @@ export function AppRouter() {
         <Route path={routes.brandAssets} element={<BrandPage />} />
         <Route path={routes.apply} element={<ApplyPage />} />
         <Route path={routes.faq} element={<FaqPage />} />
+        <Route path={routes.notFound} element={<NotFoundPage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Route>
     </Routes>

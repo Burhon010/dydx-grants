@@ -1,9 +1,9 @@
-import { useParams } from 'react-router-dom'
+import { Navigate, useParams } from 'react-router-dom'
 import { grants } from '@/entities/grant'
 import { avatarSrc, personById } from '@/entities/person'
+import { routes } from '@/shared/config'
 import { BackButton, Github, LinkedIn, LinkIcon, SectionHeading, Twitter } from '@/shared/ui'
 import { Cta } from '@/widgets/cta'
-import { NotFound } from '@/widgets/not-found'
 import { ProjectCard } from '@/widgets/project-card'
 
 const linkMeta = {
@@ -16,7 +16,7 @@ const linkMeta = {
 export function GranteePage() {
   const { id } = useParams()
   const p = personById(id)
-  if (!p) return <NotFound />
+  if (!p) return <Navigate to={routes.notFound} replace />
   const projects = grants.filter((g) => g.people.includes(p.id)).slice(0, 2)
 
   return (

@@ -10,6 +10,7 @@ export const routes = {
   brandAssets: '/brand-assets',
   apply: '/apply',
   faq: '/faq',
+  notFound: '/404',
 }
 
 export const navItems = [
