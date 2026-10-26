@@ -1,0 +1,100 @@
+@import "tailwindcss";
+@import "@fontsource-variable/figtree";
+@import "@fontsource/dm-mono/300.css";
+@import "@fontsource/dm-mono/400.css";
+@import "@fontsource/caveat/600.css";
+
+@theme {
+  --font-sans: "Figtree Variable", system-ui, sans-serif;
+  --font-mono: "DM Mono", ui-monospace, monospace;
+  --font-hand: "Caveat", cursive;
+
+  --color-bg: #1c1c28;
+  --color-surface: #393953;
+  --color-surface-dark: #24243a;
+  --color-surface-hover: #424261;
+  --color-line: #4a4a6b;
+  --color-brand: #6966ff;
+  --color-brand-hover: #7a78ff;
+  --color-muted: #b4b4c9;
+  --color-dim: #8888a3;
+  --color-ok: #14b57a;
+
+  --breakpoint-xs: 30rem;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background-color: var(--color-bg);
+  color: #fff;
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  background-image:
+    linear-gradient(to right, rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+body.menu-open {
+  overflow: hidden;
+}
+
+::selection {
+  background: var(--color-brand);
+  color: #fff;
+}
+
+@layer components {
+  .container-wide {
+    @apply mx-auto w-full max-w-[1224px] px-6;
+  }
+  .container-narrow {
+    @apply mx-auto w-full max-w-[856px] px-6;
+  }
+  .mono {
+    @apply font-mono;
+  }
+  .no-scrollbar {
+    scrollbar-width: none;
+  }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .card {
+    @apply rounded-2xl border border-white/[0.06] bg-surface transition duration-200;
+  }
+  a.card:hover,
+  .card-hover:hover {
+    @apply -translate-y-0.5 border-brand/60 bg-surface-hover;
+  }
+}
+
+.reveal {
+  animation: reveal 0.5s ease both;
+}
+@keyframes reveal {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.acc-panel {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.3s ease;
+}
+.acc-panel[data-open="true"] {
+  grid-template-rows: 1fr;
+}
+.acc-panel > div {
+  overflow: hidden;
+}
